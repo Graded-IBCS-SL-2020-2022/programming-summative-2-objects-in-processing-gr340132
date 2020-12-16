@@ -8,7 +8,37 @@ class Snowflake {
      * Bubble.java as a template. Start by creating your instance variables and
      * constructors.
      */
+    private Sketch s;
+    private float diameter;
+    private float x;
+    private float y;
+    private int col; 
+    private int borderColor; 
+    private float speedY;
+    private float speedX;
+ 
+  public Snowflake(Sketch sketch) {
+    s = sketch;
+    diameter = s.random(50, 100);
+    x = s.random(diameter / 2, s.width - diameter / 2);
+    y = s.random(diameter / 2, s.height - diameter / 2);
 
+    col = s.randomColor(false);
+
+    speedX = 15;
+    speedY = 20;
+  }
+
+  public Snowflake(Sketch sketch, float sx, float sy, float snowflakeDiam) {
+    s = sketch;
+    speedX = sx;
+    speedY = sy;
+    diameter = snowflakeDiam;
+  }
+
+  public float getRadius() {
+    return diameter / 2;
+  }
     /** Draws the flake. */
     public void drawSnowflake() {
         s.stroke(col);

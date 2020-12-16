@@ -17,6 +17,7 @@ class Bubble {
      * mostly default and one that allows custom values for whichever you want to be
      * able to change. Remember that bubbles should RISE - when setting default values,
      * take that into account!
+    
      * 
      * You can use `s.color(255, 150)` to create a transluscent 
      * white color if you wish
@@ -28,11 +29,36 @@ class Bubble {
      * SUMMATIVE OPTIONAL Add more than two constructors for varying levels of
      * customization
      */
+    public Bubble(Sketch sketch) {
+      s = sketch;
+      diameter = s.random(50, 100);
+      x = s.random(diameter/ 2, s.width - diameter / 2);
+      y = s.random(diameter / 2, s.height - diameter / 2);
 
+      col = s.randomColor(false);
+
+      speedX = s.random(-5, -10);
+      speedY = s.random(-5, -15);
+
+    }
+
+    public Bubble(Sketch sketch, float sx, float sy, float bubbleDiam) {
+      s = sketch;
+      speedX = sx;
+      speedY = sy;
+      diameter = bubbleDiam;
+    }
     /*
      * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
-     * representing the radius of the bubble
-     */
+     * representing the radius of the bubble*
+          */
+
+
+      public float getRadius(){
+     return diameter/2;
+     }
+
+
 
     /** Draws the bubble. */
     public void drawBubble() {
